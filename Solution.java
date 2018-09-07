@@ -5,21 +5,22 @@ public class Solution {
     public String solution(String S) {
 
         String[] arr = S.split("-| ");
-        String joined1 = String.join("", arr);
-        System.out.println(joined1);
-        List<String> slist = new ArrayList<>();
+        String joined = String.join("", arr);
+        List<String> listOfNumbers = new ArrayList<String>();
 
-        int index = 0;
-        while (index < joined1.length()) {
-            if ((joined1.length() - index) > 4 || index+3== joined1.length()) {
-                slist.add(joined1.substring(index, Math.min(index + 3, joined1.length())));
-                index += 3;
+        int indexOfJoinedString = 0;
+        while (indexOfJoinedString < joined.length()) {
+            if ((joined.length() - indexOfJoinedString) > 4 || indexOfJoinedString + 3 == joined.length()) {
+                listOfNumbers.add(joined.substring(indexOfJoinedString,
+                        Math.min(indexOfJoinedString + 3, joined.length())));
+                indexOfJoinedString += 3;
             } else {
-                slist.add(joined1.substring(index, Math.min(index + 2, joined1.length())));
-                index += 2;
+                listOfNumbers.add(joined.substring(indexOfJoinedString, 
+                        Math.min(indexOfJoinedString + 2, joined.length())));
+                indexOfJoinedString += 2;
             }
         }
-        String finalList = String.join("-", slist);
-        return finalList;
+        String formattedNumber = String.join("-", listOfNumbers);
+        return formattedNumber;
     }
 }
